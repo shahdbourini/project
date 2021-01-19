@@ -36,7 +36,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/Home">
+          <Route exact path="/project">
             <Home x={x} showSidebar={showSidebar} sidebar={sidebar} />
           </Route>
 

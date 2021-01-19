@@ -1,7 +1,7 @@
 export const Data = [
   {
     title: 'Home',
-    path: '/Home',
+    path: '/project',
     cName: 'nav-text',
   },
   {

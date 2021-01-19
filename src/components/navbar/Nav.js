@@ -27,8 +27,8 @@ function Nav(props) {
               <li className="nav-item">
                 <NavLink
                   className="nav-link"
-                  onClick={() => history.push('/Home')}
-                  to="/Home"
+                  onClick={() => history.push('/project')}
+                  to="/project"
                   activeClassName="is-active"
                 >
                   Home
