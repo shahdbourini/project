@@ -1,0 +1,12 @@
+
+  .price p{
+    padding-top: 21px;
+    padding-bottom: 0px;
+    color: #77a464;
+    font-weight: 400;
+  }
+
+  .ant-card-cover img {
+    border-radius: 2px 2px 0 0;
+    height: 18rem;
+}

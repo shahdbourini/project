@@ -1,0 +1,26 @@
+.about{
+    padding-top: 58px;
+}
+.test img{
+    position: relative;
+    left: 50%;
+}
+
+.carusal .ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: black;
+}
+.carusal .ant-carousel .slick-dots   {
+    background: white;
+    opacity: 0.4;
+}
+
+/* .carusal .ant-carousel .slick-dots li button {
+    background: #ff4ef6;
+    opacity: 0.4;
+}
+
+.carusal .ant-carousel .slick-dots li.slick-active button {
+    opacity: 1;
+    background: #ff4ef6;
+} */

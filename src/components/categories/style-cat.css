@@ -1,0 +1,19 @@
+.spaceing{
+    padding-left: 8%;
+}
+
+.center img ,h5{
+    position: relative;
+    left: 40%;
+}
+
+.center h5{
+    color: #d47e38;
+    font-family: "PT Serif", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    padding-top: 9%;
+    width: 40%;
+}

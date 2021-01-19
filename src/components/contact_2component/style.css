@@ -1,0 +1,30 @@
+.ant-col-8 {
+    display: block;
+    -ms-flex: 0 0 33.33333333%;
+    flex:none;
+    max-width: 33.33333333%;
+}
+
+
+.styleInput{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.ant-input:hover {
+    border-color: #d47e38;
+    border-right-width: 1px !important;
+}
+.ant-input:focus, .ant-input-focused {
+    border-color: rgb(207, 59, 59);
+    border-right-width: 1px !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgba(190, 50, 50, 0.2);
+    box-shadow: 0 0 0 2px rgba(211, 53, 53, 0.2);
+}
+
+@media screen and (max-width: 767px) {
+    .media {
+     margin-top: 40px;
+    }
+  }

@@ -1,0 +1,82 @@
+.location{
+    padding-top: 110px;
+    padding-bottom: 70px;
+}
+.design2{
+    display: inline-block;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    opacity: 0;
+}
+.ant-carousel .slick-dots  {
+    opacity: 0;
+}
+
+.design2 span{
+    color:#626262;
+    font-size: 19px;
+}
+
+.design2 h2{
+    font-size: 3rem;
+    line-height: 60px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    font-family: "PT Serif", Helvetica, Arial, sans-serif;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.design2 p {
+    margin: 35px 15% 74px 10%;
+    width: 65%;
+    color: #626262;
+    font-size: 17px;
+}
+
+.design2 img{
+    max-width: 100%;
+}
+
+.details h3{
+    display: inline;
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    /* padding-right: 25%; */
+}
+
+.details .ant-btn  {
+    color: #282828;
+    border-color: transparent;
+    font-family: PT Serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    padding: 5px;
+    border-width: 0px;
+    border-radius: 0px;
+    height: 54px;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: relative;
+    left: 29%;
+  
+    background: linear-gradient(to right, #d4d1cb 50%, #eeedea 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .2s ease-out;
+   
+}
+
+
+.details .ant-btn:hover{
+    background-position: left bottom;
+}
+
+.details .ant-btn > span {
+  font-size: 18px;
+}
