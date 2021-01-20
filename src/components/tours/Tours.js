@@ -1,15 +1,36 @@
 import './style-tours.css';
 import { Row, Col, Card } from 'antd';
 import 'antd/dist/antd.css';
+import Products from '../../pages/Products';
+import { Link, BrowserRouter, useHistory, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Tours(props) {
+  let history = useHistory();
   const { Meta } = Card;
   const [clintID, setClintID] = useState(
     'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI'
   );
   const [Result, setResult] = useState([]);
+
+  const [sidebar, setSidebar] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 80) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+  const showSidebar = () => setSidebar(!sidebar);
+
+  let x = [' navbar navbar-expand-lg navbar-dark '];
+  if (scrolled) {
+    x.push('scrolled');
+  }
 
   useEffect(() => {
     axios
@@ -22,6 +43,8 @@ function Tours(props) {
       .catch((err) => {
         console.log('Error happened during fetching!', err);
       });
+
+    window.addEventListener('scroll', handleScroll);
   }, [Result, clintID]);
 
   return (
@@ -49,22 +72,35 @@ function Tours(props) {
             lg={{ span: 7 }}
             style={{ marginRight: `3%` }}
           >
-            <Card
-              hoverable
-              style={{ maxWidth: `100%` }}
-              cover={<img alt="example" src={img.urls.regular} />}
+            <Link
+              onClick={() =>
+                history.push({
+                  pathname: '/products',
+                  state: img,
+                })
+              }
+              to={{
+                pathname: '/products',
+                state: img,
+              }}
             >
-              <Meta
-                title={
-                  <div className="price">
-                    <span>{img.user.name}</span>
-                    <br />
-                    <p className="price">$159.00</p>
-                  </div>
-                }
-                description=" Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit."
-              />
-            </Card>
+              <Card
+                hoverable
+                style={{ maxWidth: `100%` }}
+                cover={<img alt="example" src={img.urls.regular} />}
+              >
+                <Meta
+                  title={
+                    <div className="price">
+                      <span>{img.user.name}</span>
+                      <br />
+                      <p className="price">$159.00</p>
+                    </div>
+                  }
+                  description=" Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit."
+                />
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>

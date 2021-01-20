@@ -10,6 +10,7 @@ import { Divider } from 'antd';
 import { Bg_Img, Icon_Style } from './style';
 
 function Products(props) {
+  console.log((props.location && props.location.state) || {});
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
