@@ -1,8 +1,9 @@
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter, Link, useHistory } from 'react-router-dom';
 import { Data } from './Data';
 import './style-sidebar.css';
 
 function Sidbar(props) {
+  let history = useHistory();
   return (
     <>
       <BrowserRouter>
@@ -19,7 +20,18 @@ function Sidbar(props) {
             {Data.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
-                  <Link to={item.path}>{item.title}</Link>
+                  <Link
+                    className="nav-link"
+                    onClick={() =>
+                      history.push({
+                        pathname: item.path,
+                      })
+                    }
+                    to={item.path}
+                    activeClassName="is-active"
+                  >
+                    {item.title}
+                  </Link>
                   <div className="space"></div>
                 </li>
               );
