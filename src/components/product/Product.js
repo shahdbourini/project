@@ -1,8 +1,8 @@
-import React from 'react';
 import { Row, Col, InputNumber, Divider } from 'antd';
-import pic from '../../images/pic.jpg';
 import Buttons from '../button/Buttons';
+import React, { useState, useEffect } from 'react';
 import { Link, BrowserRouter } from 'react-router-dom';
+import axios from 'axios';
 import {
   H1Style2,
   SpanStyle,
@@ -10,13 +10,31 @@ import {
   StyleNum,
   StyleLinks,
   StyleLinks2,
+  Img,
 } from './style-product';
 
 function Product(props) {
+  const [clintID, setClintID] = useState(
+    'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI'
+  );
+  const [Result, setResult] = useState();
+  const [title, setTitle] = useState();
+  const [discription, setDisc] = useState();
+
   function onChange(value) {
     console.log('changed', value);
   }
 
+  useEffect(() => {
+    axios
+      .get(`https://api.unsplash.com/photos/${props.id}?client_id=` + clintID)
+      .then((res) => {
+        console.log(res);
+        setResult(res.data.urls.regular);
+        setDisc(res.data.alt_description);
+        setTitle(res.data.description);
+      });
+  }, []);
   return (
     <>
       <Row
@@ -32,9 +50,11 @@ function Product(props) {
           md={{ span: 13 }}
           lg={{ span: 11 }}
         >
-          <div className="design2">
-            <img src={pic} alt="img" />
-          </div>
+          <Img
+            src={Result}
+            alt="img"
+            // style={{ height: `567px`, width: `585px` }}
+          />
         </Col>
 
         <Col
@@ -43,14 +63,11 @@ function Product(props) {
           md={{ span: 13 }}
           lg={{ span: 11, offset: 1 }}
         >
-          <H1Style2>Cras commodo</H1Style2>
+          <H1Style2>{title}</H1Style2>
           <SpanStyle>148.00$</SpanStyle>
 
           <StyleP>
-            <p>
-              Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a
-              pellentesque dui, non felis. Maecenas malesuada elit.
-            </p>
+            <p>{discription}</p>
           </StyleP>
           <Row>
             <Col

@@ -56,7 +56,7 @@ function App() {
             <Contact x={x} showSidebar={showSidebar} sidebar={sidebar} />
           </Route>
 
-          <Route exact path="/Products">
+          <Route exact path="/Products/:id">
             <Products x={x} showSidebar={showSidebar} sidebar={sidebar} />
           </Route>
         </Switch>

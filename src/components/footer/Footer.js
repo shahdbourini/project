@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, BrowserRouter, useHistory } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Row, Col, Divider } from 'antd';
 import {
   SpanStyle,
@@ -101,8 +101,8 @@ function Footer(props) {
         </Col>
 
         <Col
-          xs={{ span: 10, offset: 2 }}
-          sm={{ span: 10, offset: 4 }}
+          xs={{ span: 15, offset: 2 }}
+          sm={{ span: 15, offset: 4 }}
           md={{ span: 7, offset: 0 }}
           lg={{ span: 8, offset: 1 }}
         >

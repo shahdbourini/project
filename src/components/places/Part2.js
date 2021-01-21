@@ -16,10 +16,10 @@ function Part2(props) {
         </Col>
 
         <Col
-          xs={{ span: 5, offset: 4 }}
-          sm={{ span: 5, offset: 0 }}
-          md={{ span: 5, offset: 0 }}
-          lg={{ span: 5, offset: 0 }}
+          xs={{ span: 12, offset: 4 }}
+          sm={{ span: 10, offset: 0 }}
+          md={{ span: 8, offset: 0 }}
+          lg={{ span: 7, offset: 0 }}
         >
           <Buttons width={70 + '%'} text="See actual tours" />
         </Col>

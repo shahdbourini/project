@@ -19,7 +19,11 @@ function Sidbar(props) {
             <div className="space s1"></div>
             {Data.map((item, index) => {
               return (
-                <li key={index} className={item.cName}>
+                <li
+                  key={index}
+                  className={item.cName}
+                  onClick={props.showSidebar}
+                >
                   <Link
                     className="nav-link"
                     onClick={() =>

@@ -40,7 +40,7 @@ function Img_Products(props) {
 
       <Row gutter={[0, 16]} style={{ paddingLeft: `9%` }}>
         {Result.map((img) => (
-          <Image.PreviewGroup>
+          <Image.PreviewGroup key={img.id}>
             <Col
               xs={{ span: 20 }}
               sm={{ span: 9 }}

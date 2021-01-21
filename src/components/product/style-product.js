@@ -24,6 +24,11 @@ export const H1Style2 = styled.h1`
   }
 `;
 
+export const Img = styled.img`
+  width: 100%;
+  height: 500px;
+`;
+
 export const SpanStyle = styled.span`
   color: #d47e38;
   font-size: 25px;

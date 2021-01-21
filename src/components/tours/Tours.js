@@ -1,9 +1,8 @@
 import './style-tours.css';
 import { Row, Col, Card } from 'antd';
 import 'antd/dist/antd.css';
-import Products from '../../pages/Products';
-import { Link, BrowserRouter, useHistory, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function Tours(props) {
@@ -14,37 +13,18 @@ function Tours(props) {
   );
   const [Result, setResult] = useState([]);
 
-  const [sidebar, setSidebar] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 80) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
-  };
-  const showSidebar = () => setSidebar(!sidebar);
-
-  let x = [' navbar navbar-expand-lg navbar-dark '];
-  if (scrolled) {
-    x.push('scrolled');
-  }
-
   useEffect(() => {
     axios
       .get(
         `https://api.unsplash.com/search/photos?query=nature&page=3&per_page=${props.number}&client_id=${clintID}`
       )
       .then((res) => {
+        // console.log(res.data.results);
         setResult(res.data.results);
       })
       .catch((err) => {
         console.log('Error happened during fetching!', err);
       });
-
-    window.addEventListener('scroll', handleScroll);
   }, [Result, clintID]);
 
   return (
@@ -71,23 +51,25 @@ function Tours(props) {
             md={{ span: 6 }}
             lg={{ span: 7 }}
             style={{ marginRight: `3%` }}
+            key={img.id}
           >
             <Link
               onClick={() =>
                 history.push({
-                  pathname: '/products',
-                  state: img,
+                  pathname: `/products/${img.id}`,
+                  data: img.id,
                 })
               }
               to={{
-                pathname: '/products',
-                state: img,
+                pathname: `/products/${img.id}`,
+                data: img.id,
               }}
             >
               <Card
                 hoverable
                 style={{ maxWidth: `100%` }}
                 cover={<img alt="example" src={img.urls.regular} />}
+                // onClick={() => onTrigger(img.user.name)}
               >
                 <Meta
                   title={

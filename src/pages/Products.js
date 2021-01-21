@@ -1,4 +1,3 @@
-import React from 'react';
 import Tours from '../components/tours/Tours';
 import PlacesCom from '../components/places/placesCom';
 import Product from '../components/product/Product';
@@ -7,10 +6,13 @@ import Nav from '../components/navbar/Nav';
 import slider from '../images/back2.png';
 import Img_Products from '../components/product_imgs/Img_Products';
 import { Divider } from 'antd';
+import { useParams } from 'react-router-dom';
 import { Bg_Img, Icon_Style } from './style';
 
 function Products(props) {
-  console.log((props.location && props.location.state) || {});
+  const { id } = useParams();
+  console.log(id);
+
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
@@ -25,7 +27,7 @@ function Products(props) {
       </Bg_Img>
 
       <Sidbar sidebar={props.sidebar} showSidebar={props.showSidebar} />
-      <Product />
+      <Product id={id} />
       <PlacesCom
         title="Lorem ipsum primis aliquam risus"
         text="Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing."
