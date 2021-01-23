@@ -12,6 +12,11 @@ import { Divider } from 'antd';
 function App() {
   const [sidebar, setSidebar] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [value, setValue] = React.useState('');
+  console.log(value);
+  function handleChanges(newValue) {
+    setValue(newValue);
+  }
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -37,27 +42,57 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/project">
-            <Home x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <Home
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              value={value}
+            />
           </Route>
 
           <Route exact path="/Tours">
-            <Tours x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <Tours
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              value={value}
+            />
           </Route>
 
           <Route exact path="/Places">
-            <Places x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <Places
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              value={value}
+            />
           </Route>
 
           <Route exact path="/About">
-            <About x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <About
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              value={value}
+            />
           </Route>
 
           <Route exact path="/Contact">
-            <Contact x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <Contact
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              value={value}
+            />
           </Route>
 
           <Route exact path="/Products/:id">
-            <Products x={x} showSidebar={showSidebar} sidebar={sidebar} />
+            <Products
+              x={x}
+              showSidebar={showSidebar}
+              sidebar={sidebar}
+              onChange={handleChanges}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

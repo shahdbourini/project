@@ -1,40 +1,99 @@
-import { Row, Col, InputNumber, Divider } from 'antd';
-import Buttons from '../button/Buttons';
+import { Row, Col, InputNumber, Divider, Button } from 'antd';
 import React, { useState, useEffect } from 'react';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link, BrowserRouter, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {
   H1Style2,
   SpanStyle,
   StyleP,
-  StyleNum,
   StyleLinks,
   StyleLinks2,
   Img,
 } from './style-product';
 
 function Product(props) {
-  const [clintID, setClintID] = useState(
-    'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI'
-  );
+  let history = useHistory();
+  const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
   const [Result, setResult] = useState();
   const [title, setTitle] = useState();
   const [discription, setDisc] = useState();
+  const [price, setPrice] = useState(0);
+  const [Value, setValue] = useState(0);
+  const [temp, setTemp] = useState();
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
 
   function onChange(value) {
-    console.log('changed', value);
+    setValue(value);
   }
 
+  function handleChange(event) {
+    props.onChange(cart.length);
+  }
+
+  const addToCart = () => {
+    let flag = true;
+    setTemp(props.id);
+    if (cart.length === 0) {
+      setCart([
+        ...cart,
+
+        {
+          id: props.id,
+          name: title,
+          price: price,
+          value: Value,
+        },
+      ]);
+
+      flag = false;
+    } else {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === temp) {
+          console.log(cart[i].id);
+          flag = false;
+        }
+      }
+    }
+    if (flag) {
+      setCart([
+        ...cart,
+
+        {
+          id: props.id,
+          name: title,
+          price: price,
+          value: Value,
+        },
+      ]);
+    } else {
+      console.log('exiest');
+    }
+  };
   useEffect(() => {
     axios
       .get(`https://api.unsplash.com/photos/${props.id}?client_id=` + clintID)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setResult(res.data.urls.regular);
         setDisc(res.data.alt_description);
         setTitle(res.data.description);
+        setPrice(res.data.user.total_photos);
       });
   }, []);
+
+  useEffect(() => {
+    const data = localStorage.getItem('data');
+
+    if (data) {
+      setCart(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(cart));
+    handleChange(cart.length);
+  });
   return (
     <>
       <Row
@@ -76,15 +135,14 @@ function Product(props) {
               md={{ span: 13 }}
               lg={{ span: 4 }}
             >
-              <StyleNum>
-                <InputNumber
-                  min={1}
-                  max={10}
-                  size="large"
-                  defaultValue={1}
-                  onChange={onChange}
-                />
-              </StyleNum>
+              <InputNumber
+                min={1}
+                max={20}
+                size="large"
+                defaultValue={1}
+                onChange={onChange}
+                style={{ height: `45px` }}
+              />
             </Col>
             <Col
               xs={{ span: 20 }}
@@ -92,7 +150,11 @@ function Product(props) {
               md={{ span: 13 }}
               lg={{ span: 10, offset: 0 }}
             >
-              <Buttons width={68 + '%'} text="Add to cart" />
+              <div className="view">
+                <Button style={{ width: `68%` }} onClick={() => addToCart()}>
+                  Add to cart
+                </Button>
+              </div>
             </Col>
           </Row>
 

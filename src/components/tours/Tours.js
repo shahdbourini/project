@@ -1,5 +1,5 @@
 import './style-tours.css';
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card, Button } from 'antd';
 import 'antd/dist/antd.css';
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
@@ -69,14 +69,15 @@ function Tours(props) {
                 hoverable
                 style={{ maxWidth: `100%` }}
                 cover={<img alt="example" src={img.urls.regular} />}
-                // onClick={() => onTrigger(img.user.name)}
               >
                 <Meta
                   title={
                     <div className="price">
                       <span>{img.user.name}</span>
                       <br />
-                      <p className="price">$159.00</p>
+                      <p className="price">
+                        {'$' + img.user.total_photos + ',00'}
+                      </p>
                     </div>
                   }
                   description=" Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit."

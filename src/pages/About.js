@@ -13,7 +13,7 @@ function About(props) {
   return (
     <>
       <Bg_Img slider={slider} height={645 + 'px'} width={33 + '%'}>
-        <Nav x={props.x} showSidebar={props.showSidebar} />
+        <Nav x={props.x} showSidebar={props.showSidebar} value={props.value} />
 
         <Icon_Style left={38 + '%'}>
           <img src={icon} alt="icon" />

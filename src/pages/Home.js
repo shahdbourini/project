@@ -15,7 +15,7 @@ function Home(props) {
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
-        <Nav x={props.x} showSidebar={props.showSidebar} />
+        <Nav x={props.x} showSidebar={props.showSidebar} value={props.value} />
 
         <Icon_Style left={48 + '%'} width={6 + '%'}>
           <img src={icon} className="img2" alt="icon" />

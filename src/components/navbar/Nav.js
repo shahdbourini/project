@@ -81,6 +81,9 @@ function Nav(props) {
         </div>
         <div className="icons nav-item">
           <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+          <span class="badge badge-warning" id="lblCartCount">
+            {props.value}
+          </span>
           <i className="fa fa-search" aria-hidden="true"></i>
         </div>
       </nav>

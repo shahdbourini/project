@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { InputNumber } from 'antd';
 
 export const H1Style2 = styled.h1`
   display: flex;
@@ -39,11 +38,6 @@ export const StyleP = styled.div`
   font-family: 'FontAwesome';
   margin-top: 32px;
   font-size: 19px;
-`;
-
-export const StyleNum = styled(InputNumber)`
-  height: 45px;
-  line-height: 42px;
 `;
 
 export const StyleLinks = styled.div`

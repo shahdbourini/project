@@ -8,15 +8,27 @@ import Img_Products from '../components/product_imgs/Img_Products';
 import { Divider } from 'antd';
 import { useParams } from 'react-router-dom';
 import { Bg_Img, Icon_Style } from './style';
+import React, { useState, useEffect } from 'react';
 
 function Products(props) {
   const { id } = useParams();
-  console.log(id);
+  const [value, setValue] = React.useState('');
 
+  function handleChange(newValue) {
+    setValue(newValue);
+  }
+
+  function handleChanges(event) {
+    props.onChange(event);
+  }
+
+  useEffect(() => {
+    handleChanges(value);
+  });
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
-        <Nav x={props.x} showSidebar={props.showSidebar} />
+        <Nav x={props.x} showSidebar={props.showSidebar} value={value} />
 
         <Icon_Style>
           <h1>
@@ -27,7 +39,7 @@ function Products(props) {
       </Bg_Img>
 
       <Sidbar sidebar={props.sidebar} showSidebar={props.showSidebar} />
-      <Product id={id} />
+      <Product id={id} value={value} onChange={handleChange} />
       <PlacesCom
         title="Lorem ipsum primis aliquam risus"
         text="Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing."

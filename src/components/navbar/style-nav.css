@@ -29,7 +29,7 @@
 
   .icons i{
     color:white;
-    padding-right: 1.5rem;
+    /* padding-right: 1.5rem; */
     font-size: 17px;
     cursor: pointer;
   }
@@ -47,6 +47,26 @@
     text-decoration: underline;
   }
 
+ 
+  @media screen and (max-width: 328px) {
+    .icons {
+     display: none;
+    }
+  }
+  
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  #lblCartCount {
+      font-size: 12px;
+      background: #d47e38;
+      color: #fff;
+      padding: 1px 5px;
+      vertical-align: top;
+      /* margin-left: -10px;  */
+      margin-right: 1.5rem;
+  }
 
 
 
