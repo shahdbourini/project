@@ -18,22 +18,21 @@ function Product(props) {
   const [title, setTitle] = useState();
   const [discription, setDisc] = useState();
   const [price, setPrice] = useState(0);
-  const [Value, setValue] = useState(0);
-  const [temp, setTemp] = useState();
+  const [quantity, setQuantity] = useState(0);
   const [cart, setCart] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
+  // const [cartTotal, setCartTotal] = useState(0);
 
   function onChange(value) {
-    setValue(value);
+    setQuantity(value);
   }
 
-  function handleChange(event) {
-    props.onChange(cart.length);
+  function handleChange(event, products) {
+    props.onChange(cart.length, products);
   }
 
-  const addToCart = () => {
+  const addToCart = (el) => {
     let flag = true;
-    setTemp(props.id);
+
     if (cart.length === 0) {
       setCart([
         ...cart,
@@ -42,15 +41,15 @@ function Product(props) {
           id: props.id,
           name: title,
           price: price,
-          value: Value,
+          value: quantity,
         },
       ]);
+      console.log('empty');
 
       flag = false;
     } else {
       for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id === temp) {
-          console.log(cart[i].id);
+        if (cart[i].id === el) {
           flag = false;
         }
       }
@@ -63,7 +62,7 @@ function Product(props) {
           id: props.id,
           name: title,
           price: price,
-          value: Value,
+          value: quantity,
         },
       ]);
     } else {
@@ -92,7 +91,7 @@ function Product(props) {
 
   useEffect(() => {
     localStorage.setItem('data', JSON.stringify(cart));
-    handleChange(cart.length);
+    handleChange(cart.length, cart);
   });
   return (
     <>
@@ -139,7 +138,6 @@ function Product(props) {
                 min={1}
                 max={20}
                 size="large"
-                defaultValue={1}
                 onChange={onChange}
                 style={{ height: `45px` }}
               />
@@ -151,7 +149,10 @@ function Product(props) {
               lg={{ span: 10, offset: 0 }}
             >
               <div className="view">
-                <Button style={{ width: `68%` }} onClick={() => addToCart()}>
+                <Button
+                  style={{ width: `68%` }}
+                  onClick={() => addToCart(props.id)}
+                >
                   Add to cart
                 </Button>
               </div>

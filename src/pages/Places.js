@@ -11,7 +11,12 @@ function Places(props) {
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
-        <Nav x={props.x} showSidebar={props.showSidebar} value={props.value} />
+        <Nav
+          x={props.x}
+          showSidebar={props.showSidebar}
+          value={props.value}
+          topCart={props.items}
+        />
 
         <Icon_Style>
           <h1>

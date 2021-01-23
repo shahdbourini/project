@@ -13,9 +13,10 @@ function App() {
   const [sidebar, setSidebar] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [value, setValue] = React.useState('');
+  const [items, setItems] = React.useState([]);
   console.log(value);
-  function handleChanges(newValue) {
-    setValue(newValue);
+  function handleChanges(newValue, items) {
+    setValue(newValue, items);
   }
 
   const handleScroll = () => {
@@ -47,6 +48,7 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               value={value}
+              items={items}
             />
           </Route>
 
@@ -56,6 +58,7 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               value={value}
+              items={items}
             />
           </Route>
 
@@ -65,6 +68,7 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               value={value}
+              items={items}
             />
           </Route>
 
@@ -74,6 +78,7 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               value={value}
+              items={items}
             />
           </Route>
 
@@ -83,6 +88,7 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               value={value}
+              items={items}
             />
           </Route>
 

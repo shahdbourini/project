@@ -12,8 +12,13 @@ import { Bg_Img, Icon_Style } from './style';
 function About(props) {
   return (
     <>
-      <Bg_Img slider={slider} height={645 + 'px'} >
-        <Nav x={props.x} showSidebar={props.showSidebar} value={props.value} />
+      <Bg_Img slider={slider} height={645 + 'px'}>
+        <Nav
+          x={props.x}
+          showSidebar={props.showSidebar}
+          value={props.value}
+          topCart={props.items}
+        />
 
         <Icon_Style left={38 + '%'} width={33 + '%'}>
           <img src={icon} alt="icon" />

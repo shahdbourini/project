@@ -13,13 +13,15 @@ import React, { useState, useEffect } from 'react';
 function Products(props) {
   const { id } = useParams();
   const [value, setValue] = React.useState('');
+  const [topCart, setTopCart] = React.useState([]);
 
-  function handleChange(newValue) {
+  function handleChange(newValue, products) {
     setValue(newValue);
+    setTopCart(products);
   }
 
-  function handleChanges(event) {
-    props.onChange(event);
+  function handleChanges(event, products) {
+    props.onChange(event, products);
   }
 
   useEffect(() => {
@@ -28,7 +30,12 @@ function Products(props) {
   return (
     <>
       <Bg_Img slider={slider} height={626 + 'px'}>
-        <Nav x={props.x} showSidebar={props.showSidebar} value={value} />
+        <Nav
+          x={props.x}
+          showSidebar={props.showSidebar}
+          value={value}
+          topCart={topCart}
+        />
 
         <Icon_Style>
           <h1>
