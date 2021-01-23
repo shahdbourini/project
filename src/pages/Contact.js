@@ -12,7 +12,6 @@ import { BrowserRouter, Link } from 'react-router-dom';
 import { Bg_Img, Icon_Style, Img_style } from './style';
 
 function Contact(props) {
-  console.log('5');
   return (
     <>
       <Bg_Img slider={slider} height={750 + 'px'}>
