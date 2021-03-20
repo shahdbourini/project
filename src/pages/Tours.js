@@ -14,6 +14,8 @@ function Tours(props) {
           showSidebar={props.showSidebar}
           value={props.value}
           topCart={props.items}
+          cart={props.cart}
+          cartLength={props.cartLength}
         />
 
         <Icon_Style>

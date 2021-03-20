@@ -103,7 +103,8 @@ function Nav(props) {
             onClick={showModal}
           ></i>
           <span class="badge badge-warning" id="lblCartCount">
-            {props.value}
+            {/* {props.value} */}
+            {props.cartLength}
           </span>
           <i className="fa fa-search" aria-hidden="true"></i>
         </div>
@@ -114,6 +115,7 @@ function Nav(props) {
         handleCancel={handleCancel}
         isModalVisible={isModalVisible}
         topCart={props.topCart}
+        cart={props.cart}
       />
     </>
   );

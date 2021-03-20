@@ -8,16 +8,14 @@ import Footer from './components/footer/Footer';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Divider } from 'antd';
+import axios from 'axios';
 
 function App() {
   const [sidebar, setSidebar] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [value, setValue] = React.useState('');
   const [items, setItems] = React.useState([]);
-  console.log(value);
-  function handleChanges(newValue, items) {
-    setValue(newValue, items);
-  }
+  const [id, setID] = React.useState();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -38,6 +36,103 @@ function App() {
     x.push('scrolled');
   }
 
+  function handleChanges(newValue, items) {
+    setValue(newValue, items);
+  }
+
+  function handleChangeID(value) {
+    setID(value);
+  }
+
+  const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
+  const [Result, setResult] = useState();
+  const [imgSmall, setImgSmall] = useState();
+  const [title, setTitle] = useState();
+  const [discription, setDisc] = useState();
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [cartLength, setCartLength] = useState(0);
+  // const [cartTotal, setCartTotal] = useState(0);
+  console.log(cartLength);
+  function onChange(value) {
+    setQuantity(value);
+  }
+
+  // function handleChange(event, products) {
+  //   props.onChange(cart.length, products);
+  // }
+
+  const addToCart = (el) => {
+    let flag = true;
+    if (cart.length === 0) {
+      setCart([
+        ...cart,
+
+        {
+          id: id,
+          name: title,
+          price: price,
+          value: quantity,
+          image: imgSmall,
+          total: price * quantity,
+        },
+      ]);
+      console.log('empty');
+
+      flag = false;
+    } else {
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === el) {
+          flag = false;
+        }
+      }
+    }
+    if (flag) {
+      setCart([
+        ...cart,
+
+        {
+          id: id,
+          name: title,
+          price: price,
+          value: quantity,
+          image: imgSmall,
+          total: price * quantity,
+        },
+      ]);
+    } else {
+      console.log('exiest');
+    }
+  };
+  useEffect(() => {
+    axios
+      .get(`https://api.unsplash.com/photos/${id}?client_id=` + clintID)
+      .then((res) => {
+        // console.log(res);
+        setResult(res.data.urls.regular);
+        setImgSmall(res.data.urls.small);
+        setDisc(res.data.alt_description);
+        setTitle(res.data.description);
+        setPrice(res.data.user.total_photos);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    const data = localStorage.getItem('data');
+
+    if (data) {
+      setCart(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(cart));
+    // handleChange(cart.length, cart);
+    // localStorage.clear();
+    setCartLength(cart.length);
+  }, [cart]);
+
   return (
     <div>
       <BrowserRouter>
@@ -49,6 +144,8 @@ function App() {
               sidebar={sidebar}
               value={value}
               items={items}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
 
@@ -59,6 +156,8 @@ function App() {
               sidebar={sidebar}
               value={value}
               items={items}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
 
@@ -69,6 +168,8 @@ function App() {
               sidebar={sidebar}
               value={value}
               items={items}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
 
@@ -79,6 +180,8 @@ function App() {
               sidebar={sidebar}
               value={value}
               items={items}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
 
@@ -89,6 +192,8 @@ function App() {
               sidebar={sidebar}
               value={value}
               items={items}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
 
@@ -98,6 +203,14 @@ function App() {
               showSidebar={showSidebar}
               sidebar={sidebar}
               onChange={handleChanges}
+              handleChangeID={handleChangeID}
+              Result={Result}
+              title={title}
+              discription={discription}
+              onChanges={onChange}
+              addToCart={addToCart}
+              cart={cart}
+              cartLength={cartLength}
             />
           </Route>
         </Switch>

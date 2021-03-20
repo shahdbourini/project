@@ -5,12 +5,12 @@ function Cart(props) {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    setCart(props.topCart);
+    setCart(props.cart);
     console.log(cart);
-  }, [props.topCart]);
+  }, [props.cart]);
 
   const removeItem = (id) => {
-    const result = props.topCart.filter((item) => item.id !== id);
+    const result = props.cart.filter((item) => item.id !== id);
     // localStorage.removeItem(id);
     setCart(result);
     console.log(result);

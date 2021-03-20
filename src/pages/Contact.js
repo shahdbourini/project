@@ -18,8 +18,10 @@ function Contact(props) {
         <Nav
           x={props.x}
           showSidebar={props.showSidebar}
-          value={props.value}
-          topCart={props.items}
+          // value={props.value}
+          // topCart={props.items}
+          cart={props.cart}
+          cartLength={props.cartLength}
         />
 
         <Icon_Style left={38 + '%'}>

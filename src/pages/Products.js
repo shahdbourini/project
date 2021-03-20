@@ -24,8 +24,13 @@ function Products(props) {
     props.onChange(event, products);
   }
 
+  function ChangeID(value) {
+    props.handleChangeID(value);
+  }
+
   useEffect(() => {
     handleChanges(value);
+    ChangeID(id);
   });
   return (
     <>
@@ -35,6 +40,8 @@ function Products(props) {
           showSidebar={props.showSidebar}
           value={value}
           topCart={topCart}
+          cart={props.cart}
+          cartLength={props.cartLength}
         />
 
         <Icon_Style>
@@ -46,7 +53,16 @@ function Products(props) {
       </Bg_Img>
 
       <Sidbar sidebar={props.sidebar} showSidebar={props.showSidebar} />
-      <Product id={id} value={value} onChange={handleChange} />
+      <Product
+        id={id}
+        value={value}
+        onChange={handleChange}
+        Result={props.Result}
+        title={props.title}
+        discription={props.discription}
+        onChanges={props.onChange}
+        addToCart={props.addToCart}
+      />
       <PlacesCom
         title="Lorem ipsum primis aliquam risus"
         text="Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing."

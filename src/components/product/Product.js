@@ -12,92 +12,92 @@ import {
 } from './style-product';
 
 function Product(props) {
-  const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
-  const [Result, setResult] = useState();
-  const [imgSmall, setImgSmall] = useState();
-  const [title, setTitle] = useState();
-  const [discription, setDisc] = useState();
-  const [price, setPrice] = useState(0);
-  const [quantity, setQuantity] = useState(0);
-  const [cart, setCart] = useState([]);
-  // const [cartTotal, setCartTotal] = useState(0);
+  // const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
+  // const [Result, setResult] = useState();
+  // const [imgSmall, setImgSmall] = useState();
+  // const [title, setTitle] = useState();
+  // const [discription, setDisc] = useState();
+  // const [price, setPrice] = useState(0);
+  // const [quantity, setQuantity] = useState(0);
+  // const [cart, setCart] = useState([]);
+  // // const [cartTotal, setCartTotal] = useState(0);
 
-  function onChange(value) {
-    setQuantity(value);
-  }
+  // function onChange(value) {
+  //   setQuantity(value);
+  // }
 
-  function handleChange(event, products) {
-    props.onChange(cart.length, products);
-  }
+  // function handleChange(event, products) {
+  //   props.onChange(cart.length, products);
+  // }
 
-  const addToCart = (el) => {
-    let flag = true;
-    if (cart.length === 0) {
-      setCart([
-        ...cart,
+  // const addToCart = (el) => {
+  //   let flag = true;
+  //   if (cart.length === 0) {
+  //     setCart([
+  //       ...cart,
 
-        {
-          id: props.id,
-          name: title,
-          price: price,
-          value: quantity,
-          image: imgSmall,
-          total: price * quantity,
-        },
-      ]);
-      console.log('empty');
+  //       {
+  //         id: props.id,
+  //         name: title,
+  //         price: price,
+  //         value: quantity,
+  //         image: imgSmall,
+  //         total: price * quantity,
+  //       },
+  //     ]);
+  //     console.log('empty');
 
-      flag = false;
-    } else {
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id === el) {
-          flag = false;
-        }
-      }
-    }
-    if (flag) {
-      setCart([
-        ...cart,
+  //     flag = false;
+  //   } else {
+  //     for (let i = 0; i < cart.length; i++) {
+  //       if (cart[i].id === el) {
+  //         flag = false;
+  //       }
+  //     }
+  //   }
+  //   if (flag) {
+  //     setCart([
+  //       ...cart,
 
-        {
-          id: props.id,
-          name: title,
-          price: price,
-          value: quantity,
-          image: imgSmall,
-          total: price * quantity,
-        },
-      ]);
-    } else {
-      console.log('exiest');
-    }
-  };
-  useEffect(() => {
-    axios
-      .get(`https://api.unsplash.com/photos/${props.id}?client_id=` + clintID)
-      .then((res) => {
-        // console.log(res);
-        setResult(res.data.urls.regular);
-        setImgSmall(res.data.urls.small);
-        setDisc(res.data.alt_description);
-        setTitle(res.data.description);
-        setPrice(res.data.user.total_photos);
-      });
-  }, []);
+  //       {
+  //         id: props.id,
+  //         name: title,
+  //         price: price,
+  //         value: quantity,
+  //         image: imgSmall,
+  //         total: price * quantity,
+  //       },
+  //     ]);
+  //   } else {
+  //     console.log('exiest');
+  //   }
+  // };
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://api.unsplash.com/photos/${props.id}?client_id=` + clintID)
+  //     .then((res) => {
+  //       // console.log(res);
+  //       setResult(res.data.urls.regular);
+  //       setImgSmall(res.data.urls.small);
+  //       setDisc(res.data.alt_description);
+  //       setTitle(res.data.description);
+  //       setPrice(res.data.user.total_photos);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    const data = localStorage.getItem('data');
+  // useEffect(() => {
+  //   const data = localStorage.getItem('data');
 
-    if (data) {
-      setCart(JSON.parse(data));
-    }
-  }, []);
+  //   if (data) {
+  //     setCart(JSON.parse(data));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(cart));
-    handleChange(cart.length, cart);
-    // localStorage.clear();
-  });
+  // useEffect(() => {
+  //   localStorage.setItem('data', JSON.stringify(cart));
+  //   handleChange(cart.length, cart);
+  //   // localStorage.clear();
+  // });
   return (
     <>
       <Row
@@ -114,7 +114,7 @@ function Product(props) {
           lg={{ span: 11 }}
         >
           <Img
-            src={Result}
+            src={props.Result}
             alt="img"
             // style={{ height: `567px`, width: `585px` }}
           />
@@ -126,11 +126,11 @@ function Product(props) {
           md={{ span: 13 }}
           lg={{ span: 11, offset: 1 }}
         >
-          <H1Style2>{title}</H1Style2>
+          <H1Style2>{props.title}</H1Style2>
           <SpanStyle>148.00$</SpanStyle>
 
           <StyleP>
-            <p>{discription}</p>
+            <p>{props.discription}</p>
           </StyleP>
           <Row>
             <Col
@@ -143,7 +143,7 @@ function Product(props) {
                 min={1}
                 max={20}
                 size="large"
-                onChange={onChange}
+                onChange={props.onChanges}
                 style={{ height: `45px` }}
               />
             </Col>
@@ -156,7 +156,7 @@ function Product(props) {
               <div className="view">
                 <Button
                   style={{ width: `68%` }}
-                  onClick={() => addToCart(props.id)}
+                  onClick={() => props.addToCart(props.id)}
                 >
                   Add to cart
                 </Button>
