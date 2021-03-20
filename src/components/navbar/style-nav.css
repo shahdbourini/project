@@ -101,3 +101,8 @@
     opacity: 0.8
 }
 
+.cart-font{
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: cursive;
+}

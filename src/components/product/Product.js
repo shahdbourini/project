@@ -12,9 +12,9 @@ import {
 } from './style-product';
 
 function Product(props) {
-  let history = useHistory();
   const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
   const [Result, setResult] = useState();
+  const [imgSmall, setImgSmall] = useState();
   const [title, setTitle] = useState();
   const [discription, setDisc] = useState();
   const [price, setPrice] = useState(0);
@@ -32,7 +32,6 @@ function Product(props) {
 
   const addToCart = (el) => {
     let flag = true;
-
     if (cart.length === 0) {
       setCart([
         ...cart,
@@ -42,6 +41,8 @@ function Product(props) {
           name: title,
           price: price,
           value: quantity,
+          image: imgSmall,
+          total: price * quantity,
         },
       ]);
       console.log('empty');
@@ -63,6 +64,8 @@ function Product(props) {
           name: title,
           price: price,
           value: quantity,
+          image: imgSmall,
+          total: price * quantity,
         },
       ]);
     } else {
@@ -75,6 +78,7 @@ function Product(props) {
       .then((res) => {
         // console.log(res);
         setResult(res.data.urls.regular);
+        setImgSmall(res.data.urls.small);
         setDisc(res.data.alt_description);
         setTitle(res.data.description);
         setPrice(res.data.user.total_photos);
@@ -92,6 +96,7 @@ function Product(props) {
   useEffect(() => {
     localStorage.setItem('data', JSON.stringify(cart));
     handleChange(cart.length, cart);
+    // localStorage.clear();
   });
   return (
     <>
