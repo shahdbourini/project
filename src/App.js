@@ -53,16 +53,35 @@ function App() {
   const [quantity, setQuantity] = useState(0);
   const [cart, setCart] = useState([]);
   const [cartLength, setCartLength] = useState(0);
-  // const [cartTotal, setCartTotal] = useState(0);
-  console.log(cartLength);
+
   function onChange(value) {
     setQuantity(value);
+    console.log(value);
   }
 
   // function handleChange(event, products) {
   //   props.onChange(cart.length, products);
   // }
 
+  const removeItem = (index) => {
+    var array = [...cart];
+    console.log(index);
+    if (index !== -1) {
+      array.splice(index, 1);
+      setCart(array);
+    }
+  };
+
+  const addItem = (id) => {
+    // const num = value + 1;
+    // console.log(num);
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === id) {
+        cart[i].value = cart[i].value + 1;
+        console.log(cart[i].value);
+      }
+    }
+  };
   const addToCart = (el) => {
     let flag = true;
     if (cart.length === 0) {
@@ -146,6 +165,8 @@ function App() {
               items={items}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
 
@@ -158,6 +179,8 @@ function App() {
               items={items}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
 
@@ -170,6 +193,8 @@ function App() {
               items={items}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
 
@@ -182,6 +207,8 @@ function App() {
               items={items}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
 
@@ -194,6 +221,8 @@ function App() {
               items={items}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
 
@@ -211,6 +240,8 @@ function App() {
               addToCart={addToCart}
               cart={cart}
               cartLength={cartLength}
+              removeItem={removeItem}
+              addItem={addItem}
             />
           </Route>
         </Switch>

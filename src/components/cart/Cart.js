@@ -9,17 +9,11 @@ function Cart(props) {
     console.log(cart);
   }, [props.cart]);
 
-  const removeItem = (id) => {
-    const result = props.cart.filter((item) => item.id !== id);
-    // localStorage.removeItem(id);
-    setCart(result);
-    console.log(result);
-  };
+  // localStorage.removeItem('data');
 
-  const addItem = (id) => {
-    // const result = props.topCart.filter((item) => item.id !== id);
-    // setCart(result);
-    console.log(id);
+  const addItem = (value) => {
+    const num = value + 1;
+    console.log(num);
   };
 
   return (
@@ -34,8 +28,8 @@ function Cart(props) {
         <Row>
           <Col
             xs={{ span: 4 }}
-            sm={{ span: 4 }}
-            md={{ span: 4 }}
+            sm={{ span: 2 }}
+            md={{ span: 3 }}
             lg={{ span: 4 }}
           >
             <p className="cart-font" style={{ paddingLeft: `25%` }}>
@@ -45,8 +39,8 @@ function Cart(props) {
 
           <Col
             xs={{ span: 4 }}
-            sm={{ span: 4 }}
-            md={{ span: 4 }}
+            sm={{ span: 3, offset: 1 }}
+            md={{ span: 2 }}
             lg={{ span: 3, offset: 1 }}
           >
             <p className="cart-font">Name</p>
@@ -55,15 +49,15 @@ function Cart(props) {
           <Col
             xs={{ span: 4 }}
             sm={{ span: 4 }}
-            md={{ span: 4 }}
+            md={{ span: 3, offset: 1 }}
             lg={{ span: 3 }}
           >
             <p className="cart-font">Quantity</p>
           </Col>
           <Col
             xs={{ span: 4 }}
-            sm={{ span: 4 }}
-            md={{ span: 5 }}
+            sm={{ span: 2, offset: 1 }}
+            md={{ span: 3, offset: 1 }}
             lg={{ span: 3, offset: 1 }}
           >
             <p className="cart-font">Price</p>
@@ -71,8 +65,8 @@ function Cart(props) {
 
           <Col
             xs={{ span: 4 }}
-            sm={{ span: 4 }}
-            md={{ span: 5 }}
+            sm={{ span: 3, offset: 1 }}
+            md={{ span: 3 }}
             lg={{ span: 3 }}
           >
             <p className="cart-font">Total</p>
@@ -81,7 +75,7 @@ function Cart(props) {
           <Col
             xs={{ span: 4 }}
             sm={{ span: 4 }}
-            md={{ span: 5 }}
+            md={{ span: 4 }}
             lg={{ span: 4 }}
           >
             <p className="cart-font">plus/minus</p>
@@ -90,7 +84,7 @@ function Cart(props) {
           <Col
             xs={{ span: 4 }}
             sm={{ span: 4 }}
-            md={{ span: 5 }}
+            md={{ span: 2 }}
             lg={{ span: 2 }}
           >
             <p className="cart-font">delete</p>
@@ -102,27 +96,27 @@ function Cart(props) {
 
           <Row gutter={[0, 16]} key={item.id}>
             <Col
-              xs={{ span: 4 }}
-              sm={{ span: 4 }}
-              md={{ span: 4 }}
+              xs={{ span: 2 }}
+              sm={{ span: 2 }}
+              md={{ span: 3 }}
               lg={{ span: 4 }}
             >
-              <img src={item.image} style={{ width: `90%`, height: `12vh` }} />
+              <img src={item.image} style={{ width: `90%`, height: `92%` }} />
             </Col>
 
             <Col
-              xs={{ span: 4 }}
-              sm={{ span: 4 }}
-              md={{ span: 4 }}
+              xs={{ span: 3 }}
+              sm={{ span: 3, offset: 1 }}
+              md={{ span: 3 }}
               lg={{ span: 3, offset: 1 }}
             >
               <p>{item.name}</p>
             </Col>
 
             <Col
-              xs={{ span: 4 }}
-              sm={{ span: 4 }}
-              md={{ span: 4 }}
+              xs={{ span: 2 }}
+              sm={{ span: 3, offset: 1 }}
+              md={{ span: 3, offset: 1 }}
               lg={{ span: 2, offset: 1 }}
             >
               <p>{item.value}</p>
@@ -130,32 +124,32 @@ function Cart(props) {
 
             <Col
               xs={{ span: 4 }}
-              sm={{ span: 4 }}
-              md={{ span: 5 }}
+              sm={{ span: 3 }}
+              md={{ span: 4 }}
               lg={{ span: 3, offset: 1 }}
             >
               <p>{item.price}$</p>
             </Col>
 
             <Col
-              xs={{ span: 4 }}
-              sm={{ span: 4 }}
-              md={{ span: 5 }}
+              xs={{ span: 3 }}
+              sm={{ span: 3 }}
+              md={{ span: 2 }}
               lg={{ span: 3 }}
             >
               <p>{item.total}$</p>
             </Col>
 
             <Col
-              xs={{ span: 4 }}
+              xs={{ span: 3 }}
               sm={{ span: 4 }}
-              md={{ span: 5 }}
+              md={{ span: 4 }}
               lg={{ span: 4 }}
             >
               <Button
                 type="primary"
                 style={{ borderRadius: `87%`, height: `35px` }}
-                onClick={() => addItem(index)}
+                onClick={() => props.addItem(item.id)}
               >
                 +
               </Button>
@@ -171,10 +165,14 @@ function Cart(props) {
             <Col
               xs={{ span: 4 }}
               sm={{ span: 4 }}
-              md={{ span: 5 }}
+              md={{ span: 2 }}
               lg={{ span: 2 }}
             >
-              <Button type="primary" danger onClick={() => removeItem(item.id)}>
+              <Button
+                type="primary"
+                danger
+                onClick={() => props.removeItem(index)}
+              >
                 <i class="fa fa-times" aria-hidden="true"></i>
               </Button>
             </Col>

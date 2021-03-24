@@ -42,6 +42,8 @@ function Products(props) {
           topCart={topCart}
           cart={props.cart}
           cartLength={props.cartLength}
+          removeItem={props.removeItem}
+          addItem={props.addItem}
         />
 
         <Icon_Style>
@@ -60,7 +62,7 @@ function Products(props) {
         Result={props.Result}
         title={props.title}
         discription={props.discription}
-        onChanges={props.onChange}
+        onChanges={props.onChanges}
         addToCart={props.addToCart}
       />
       <PlacesCom

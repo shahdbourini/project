@@ -1,6 +1,5 @@
 import { Row, Col, InputNumber, Divider, Button } from 'antd';
-import React, { useState, useEffect } from 'react';
-import { Link, BrowserRouter, useHistory } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import {
   H1Style2,
@@ -12,92 +11,6 @@ import {
 } from './style-product';
 
 function Product(props) {
-  // const clintID = 'je2vpPqIlY_oNO9jhIR_GUIkQkEIE7fzJS0hWg9SLgI';
-  // const [Result, setResult] = useState();
-  // const [imgSmall, setImgSmall] = useState();
-  // const [title, setTitle] = useState();
-  // const [discription, setDisc] = useState();
-  // const [price, setPrice] = useState(0);
-  // const [quantity, setQuantity] = useState(0);
-  // const [cart, setCart] = useState([]);
-  // // const [cartTotal, setCartTotal] = useState(0);
-
-  // function onChange(value) {
-  //   setQuantity(value);
-  // }
-
-  // function handleChange(event, products) {
-  //   props.onChange(cart.length, products);
-  // }
-
-  // const addToCart = (el) => {
-  //   let flag = true;
-  //   if (cart.length === 0) {
-  //     setCart([
-  //       ...cart,
-
-  //       {
-  //         id: props.id,
-  //         name: title,
-  //         price: price,
-  //         value: quantity,
-  //         image: imgSmall,
-  //         total: price * quantity,
-  //       },
-  //     ]);
-  //     console.log('empty');
-
-  //     flag = false;
-  //   } else {
-  //     for (let i = 0; i < cart.length; i++) {
-  //       if (cart[i].id === el) {
-  //         flag = false;
-  //       }
-  //     }
-  //   }
-  //   if (flag) {
-  //     setCart([
-  //       ...cart,
-
-  //       {
-  //         id: props.id,
-  //         name: title,
-  //         price: price,
-  //         value: quantity,
-  //         image: imgSmall,
-  //         total: price * quantity,
-  //       },
-  //     ]);
-  //   } else {
-  //     console.log('exiest');
-  //   }
-  // };
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://api.unsplash.com/photos/${props.id}?client_id=` + clintID)
-  //     .then((res) => {
-  //       // console.log(res);
-  //       setResult(res.data.urls.regular);
-  //       setImgSmall(res.data.urls.small);
-  //       setDisc(res.data.alt_description);
-  //       setTitle(res.data.description);
-  //       setPrice(res.data.user.total_photos);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   const data = localStorage.getItem('data');
-
-  //   if (data) {
-  //     setCart(JSON.parse(data));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('data', JSON.stringify(cart));
-  //   handleChange(cart.length, cart);
-  //   // localStorage.clear();
-  // });
   return (
     <>
       <Row

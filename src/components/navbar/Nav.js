@@ -3,7 +3,7 @@ import { Row, Col, InputNumber, Divider, Button, Modal } from 'antd';
 import logo from '../../images/logo.png';
 import Cart from '../cart/Cart';
 import './style-nav.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function Nav(props) {
   let history = useHistory();
@@ -103,7 +103,6 @@ function Nav(props) {
             onClick={showModal}
           ></i>
           <span class="badge badge-warning" id="lblCartCount">
-            {/* {props.value} */}
             {props.cartLength}
           </span>
           <i className="fa fa-search" aria-hidden="true"></i>
@@ -116,6 +115,8 @@ function Nav(props) {
         isModalVisible={isModalVisible}
         topCart={props.topCart}
         cart={props.cart}
+        removeItem={props.removeItem}
+        addItem={props.addItem}
       />
     </>
   );
