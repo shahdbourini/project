@@ -1,0 +1,87 @@
+.cartPlus{
+    cursor: pointer;
+    padding-left: 17%;
+}
+
+.cartPlus i{
+    color: #1890ff;
+    font-size: 20px;
+    padding-right: 4px;
+}
+
+.cartMinus{
+    cursor: pointer;   
+}
+
+.cartMinus i{
+    color: red;
+    font-size: 20px;
+    padding-left: 8px;
+}
+
+.cart-font{
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-family: cursive;
+  }
+
+  .cartDisplay{
+      display: inline-flex;
+  }
+
+  .cartRemove{
+      cursor: pointer;
+    color: red;
+    font-size: 26px;
+    position: relative;
+    top: -10px;
+}
+
+.title{
+    font-weight: 400;
+}
+
+
+.ant-modal-title {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 22px;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.ant-modal-body {
+    overflow-y: scroll;
+    height: 500px;
+}
+
+  /************************************************************************************/
+
+    @media(min-width:502px) and (max-width:767px){
+   .cart-font {
+     font-size: 13px;
+    }
+  }
+
+  @media(min-width:320px) and (max-width:501px){
+    .cart-font {
+      font-size: 10px;
+     }
+
+     .cartMinus i{
+        font-size: 16px;
+        padding-left: 4px;
+    }
+    .cartPlus i{
+        font-size: 16px;
+        padding-left: 4px;
+    }
+    .cartRemove{
+        font-size: 16px;
+    }
+    .title{
+        font-weight: 600;
+    }
+   }

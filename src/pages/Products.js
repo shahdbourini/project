@@ -44,6 +44,7 @@ function Products(props) {
           cartLength={props.cartLength}
           removeItem={props.removeItem}
           addItem={props.addItem}
+          MinusItem={props.MinusItem}
         />
 
         <Icon_Style>

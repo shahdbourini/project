@@ -73,14 +73,30 @@ function App() {
   };
 
   const addItem = (id) => {
-    // const num = value + 1;
-    // console.log(num);
-    for (let i = 0; i < cart.length; i++) {
-      if (cart[i].id === id) {
-        cart[i].value = cart[i].value + 1;
-        console.log(cart[i].value);
+    var array = [...cart];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === id) {
+        array[i].value = array[i].value + 1;
+        array[i].total = array[i].value * array[i].price;
       }
     }
+    setCart(array);
+  };
+
+  const MinusItem = (id) => {
+    var array = [...cart];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].id === id) {
+        if (array[i].value === 0) {
+          array[i].value = 0;
+          array[i].total = array[i].value * array[i].price;
+        } else {
+          array[i].value = array[i].value - 1;
+          array[i].total = array[i].value * array[i].price;
+        }
+      }
+    }
+    setCart(array);
   };
   const addToCart = (el) => {
     let flag = true;
@@ -167,6 +183,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
 
@@ -181,6 +198,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
 
@@ -195,6 +213,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
 
@@ -209,6 +228,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
 
@@ -223,6 +243,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
 
@@ -242,6 +263,7 @@ function App() {
               cartLength={cartLength}
               removeItem={removeItem}
               addItem={addItem}
+              MinusItem={MinusItem}
             />
           </Route>
         </Switch>

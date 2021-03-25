@@ -24,6 +24,7 @@ function Home(props) {
           cartLength={props.cartLength}
           removeItem={props.removeItem}
           addItem={props.addItem}
+          MinusItem={props.MinusItem}
         />
 
         <Icon_Style left={48 + '%'} width={6 + '%'}>

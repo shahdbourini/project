@@ -117,6 +117,7 @@ function Nav(props) {
         cart={props.cart}
         removeItem={props.removeItem}
         addItem={props.addItem}
+        MinusItem={props.MinusItem}
       />
     </>
   );
